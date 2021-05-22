@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { GithubsearchService } from './githubsearch.service'
+import { Component, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,6 @@ import { GithubsearchService } from './githubsearch.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'gitsearch';
 
-  constructor(private githubsearchService:GithubsearchService){
-    this.githubsearchService = githubsearchService
-  }
 
-  checkworking(){
-    this.githubsearchService.getUserRepos('layersony')
-  }
 }

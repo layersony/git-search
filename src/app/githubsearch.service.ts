@@ -10,10 +10,8 @@ import { Repos } from './repos';
 })
 export class GithubsearchService {
 
-  //blueprint of classes for 
-
-  userdetail : Userdetail
-  repos : Repos
+  userdetail : Userdetail;
+  repos : Repos;
   repoData : any = [] // repo data full
   singleRepoData : any = [] // single repo data
 
@@ -25,6 +23,9 @@ export class GithubsearchService {
 
   // RECEIVING THE DATA
   getUserDetails(user:string){
+
+    this.userdetail = new Userdetail('', '', '', '');  // make sure userdetail is empty
+
     interface ApiResponse {
       login:string,
       avatar_url:string,
@@ -48,6 +49,8 @@ export class GithubsearchService {
   }
   // RECEIVE REPOS
   getUserRepos(user:string){
+
+    this.repoData.splice(0, this.repoData.length) // deleting an array
 
     let promise = new Promise((resolve, reject) => {
       this.http.get<any>('https://api.github.com/users/' + user + '/repos?access_token=' + environment.apiKey).toPromise().then(response => {
