@@ -14,6 +14,6 @@ export class AppComponent {
   }
 
   checkworking(){
-    this.githubsearchService.getUserDetails('layersony')
+    this.githubsearchService.getUserRepos('layersony')
   }
 }

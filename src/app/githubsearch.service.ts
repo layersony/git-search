@@ -14,6 +14,9 @@ export class GithubsearchService {
 
   userdetail : Userdetail
   repos : Repos
+  repoData : any = [] // repo data full
+  singleRepoData : any = [] // single repo data
+
 
   constructor(private http:HttpClient) { 
     this.userdetail = new Userdetail('', '', '', ''); // for userdetails
@@ -21,9 +24,7 @@ export class GithubsearchService {
   }
 
   // RECEIVING THE DATA
-
   getUserDetails(user:string){
-
     interface ApiResponse {
       login:string,
       avatar_url:string,
@@ -39,11 +40,27 @@ export class GithubsearchService {
         this.userdetail.name = response.name
 
         resolve("it's a Success")
-      })
+      }), (error:any )=>{
+        reject(error);
+      }
     })
-    // console.log(this.userdetail)
-    return promise
-
+    return promise;
   }
+  // RECEIVE REPOS
+  getUserRepos(user:string){
 
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<any>('https://api.github.com/users/' + user + '/repos?access_token=' + environment.apiKey).toPromise().then(response => {
+        for (var i = 0; i < response.length; i++) {
+          this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at)
+          this.repoData.push(this.singleRepoData)
+        }
+        resolve('Success')
+      }), (error: any) => {
+        reject(error)
+      }
+    })
+    
+    return promise;
+  }
 }
