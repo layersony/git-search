@@ -1,5 +1,9 @@
 <div class="container bg-white">
-  <div *ngFor ='let repo of repos'>
-    <p>{{ repo.name }}</p>
+  <div class="row">
+    <div class="col-md-3 mt-2" *ngFor='let repo of repos'>
+      <div class='bg-primary p-3 repo'>
+        <p>{{ repo.name }}</p>
+      </div>
+    </div>
   </div>
 </div>

@@ -12,25 +12,36 @@ export class GithubsearchService {
 
   userdetail : Userdetail;
   repos : Repos;
-  repoData : any = [] // repo data full
-  singleRepoData : any = [] // single repo data
+  repoData : any = []
+  singleRepoData : any = [] 
 
 
   constructor(private http:HttpClient) { 
-    this.userdetail = new Userdetail('', '', '', ''); // for userdetails
-    this.repos = new Repos('', '', new Date()); // for repos
+    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', new Date(), new Date());
+    this.repos = new Repos('', '', new Date(), new Date(), 0, '', '', ''); 
   }
 
   // RECEIVING THE DATA
   getUserDetails(user:string){
 
-    this.userdetail = new Userdetail('', '', '', '');  // make sure userdetail is empty
+    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', new Date(), new Date());
 
     interface ApiResponse {
       login:string,
       avatar_url:string,
       repos_url:string,
       name:string,
+      url:string,
+      blog:string,
+      location:string,
+      email:string,
+      bio:string,
+      twitter_username:string,
+      public_repos:number,
+      followers:string,
+      following:string,
+      created_at: Date,
+      update_at: Date
     }
 
     let promise = new Promise((resolve, reject) =>{
@@ -39,6 +50,17 @@ export class GithubsearchService {
         this.userdetail.avatar_url = response.avatar_url,
         this.userdetail.repos_url = response.repos_url,
         this.userdetail.name = response.name
+        this.userdetail.url = response.url
+        this.userdetail.blog = response.blog
+        this.userdetail.location = response.location
+        this.userdetail.email = response.email
+        this.userdetail.bio = response.bio
+        this.userdetail.twitter_username = response.twitter_username
+        this.userdetail.followers = response.followers
+        this.userdetail.following = response.following
+        this.userdetail.created_at = response.created_at
+        this.userdetail.update_at = response.update_at
+
 
         resolve("it's a Success")
       }), (error:any )=>{
@@ -55,8 +77,9 @@ export class GithubsearchService {
     // let promise = new Promise((resolve, reject) => {
       this.http.get<any>('https://api.github.com/users/' + user + '/repos?access_token=' + environment.apiKey).toPromise().then(response => {
         for (var i = 0; i < response.length; i++) {
-          this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at)
+          this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at, response[i].created_at, response[i].forks, response[i].language, response[i].clone_url, response[i].homepage )
           this.repoData.push(this.singleRepoData)
+
         }
         resolve('Success')
       }), (error: any) => {

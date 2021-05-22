@@ -10,6 +10,7 @@ import { GithubsearchService } from '../githubsearch.service'
 export class RepodetailsComponent implements OnInit {
 
   repos: any = []
+
   githubsearchService: GithubsearchService;
 
   constructor(githubsearchService:GithubsearchService) { 
@@ -19,6 +20,6 @@ export class RepodetailsComponent implements OnInit {
   
   ngOnInit(): void {
     this.repos = this.githubsearchService.repoData
-
+    console.log(this.githubsearchService.userdetail)
   }
 }
