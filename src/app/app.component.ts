@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GithubsearchService } from './githubsearch.service'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gitsearch';
+
+  constructor(private githubsearchService:GithubsearchService){
+    this.githubsearchService = githubsearchService
+  }
+
+  checkworking(){
+    this.githubsearchService.getUserDetails('layersony')
+  }
 }
