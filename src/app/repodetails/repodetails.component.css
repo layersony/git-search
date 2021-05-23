@@ -1,6 +1,13 @@
 .container{
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.522);
+  padding: 10px;
 }
 .repo{
-  min-height: 150px;
+  min-height: 250px;
+}
+
+img{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
 }

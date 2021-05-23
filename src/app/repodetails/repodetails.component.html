@@ -1,11 +1,48 @@
 <div class="container">
+  <div>
+    <form (ngSubmit)='searchrepo()'>
+      
+      <div class=" d-flex justify-content-between reposearch">
+        <input type="text" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
+        <button type='submit' class="ml-2 btn btn-outline-danger">Submit</button>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="bg-white ">
+    <div class="row">
+      <div class="col-md-6 ">
+        <div class="text-center">
+          <img src="{{usrde.avatar_url}}" alt="{{usrde.login}}avatar" class="img-fluid">
+        </div>
+        <h3>{{ usrde.login }}</h3>
+        <p><i class="fa fa-twitter" aria-hidden="true"></i> <span>{{ usrde.twitter_username }}</span></p>
+
+        <p>Bio <span>{{ usrde.bio }}</span></p>
+
+      </div>
+      <div class="col-md-6 bg-primary">
+        <h2><span>{{ usrde.name }}</span></h2>
+        <p><i class="fa fa-rss" aria-hidden="true"></i> <span>{{ usrde.blog }}</span></p>
+        <p><i class="fa fa-map-marker" aria-hidden="true"></i> <span>{{ usrde.location }}</span></p>
+        <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>{{ usrde.email }}</span></p>
+        <p>Public repos <span>{{ usrde.public_repos }}</span></p>
+        <p><fa-icon [icon]='faUserAlt'></fa-icon> <span>{{ usrde.followers }}</span></p>
+        <p><fa-icon [icon]='faUserFriends'></fa-icon> <span>{{ usrde.following }}</span></p>
+        <p>Created on <span>{{ usrde.create_at }}</span></p>
+        <p>Updated on <span>{{ usrde.update_at }}</span></p>
+      </div>
+    </div>
+  </div>
+  <hr>
   <div class="row">
     <div class="col-md-3 col-sm-6 mt-2" *ngFor='let repo of repos'>
       <div class='bg-white p-3 repo'>
         <h3>{{ repo.name }}</h3>
-        <a href="{{ repo.html_url }}"><fa-icon [icon]='faUtensils'></fa-icon> To Repository</a>
+        <hr>
+        <a href="{{ repo.html_url }}"><i class="fa fa-github" aria-hidden="true"></i> To Repository</a>
         <div class="desc">
-          <p>{{ repo.description }}</p>
+          <p>{{ repo.description }} </p>
         </div>
         <div class=" d-flex justify-content-between ">
           <p>Created: {{ repo.created_url }}</p>
@@ -14,7 +51,7 @@
         <div class=" d-flex justify-content-between ">
           <p> <fa-icon [icon]='faCodeBranch'></fa-icon> {{ repo.forks }}</p>
           <p><fa-icon [icon]='faFileCode'></fa-icon> {{ repo.language }}</p>
-          <a href="{{ repo.clone_url }}"> <fa-icon [icon]='faClone'></fa-icon></a><br>
+          <a href="{{ repo.clone_url }}"> <fa-icon [icon]='faClone'></fa-icon></a>
           <a href="{{ repo.homepage }}"><fa-icon [icon]='faLaptopCode'></fa-icon></a>  
         </div>
 
