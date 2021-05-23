@@ -1,7 +1,6 @@
 <div class="container">
   <div>
     <form (ngSubmit)='searchrepo()'>
-      
       <div class=" d-flex justify-content-between reposearch">
         <input type="text" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
         <button type='submit' class="ml-2 btn btn-outline-danger">Submit</button>
@@ -9,28 +8,34 @@
     </form>
   </div>
   <hr>
-  <div class="bg-white ">
-    <div class="row">
-      <div class="col-md-6 ">
-        <div class="text-center">
-          <img src="{{usrde.avatar_url}}" alt="{{usrde.login}}avatar" class="img-fluid">
+  <div class="d-md-flex justify-content-center align-items-center">
+    <div class="text-left bg-white userdetail">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="text-md-center">
+            <img src="{{usrde.avatar_url}}" alt="{{usrde.login}}avatar" class="img-fluid">
+          </div>
+          <h3>{{ usrde.login }}</h3>
+          <p><i class="fa fa-twitter" aria-hidden="true"></i> <span>{{ usrde.twitter_username }}</span></p>
+  
+          <p>Bio <span>{{ usrde.bio }}</span></p>
+  
         </div>
-        <h3>{{ usrde.login }}</h3>
-        <p><i class="fa fa-twitter" aria-hidden="true"></i> <span>{{ usrde.twitter_username }}</span></p>
-
-        <p>Bio <span>{{ usrde.bio }}</span></p>
-
-      </div>
-      <div class="col-md-6 bg-primary">
-        <h2><span>{{ usrde.name }}</span></h2>
-        <p><i class="fa fa-rss" aria-hidden="true"></i> <span>{{ usrde.blog }}</span></p>
-        <p><i class="fa fa-map-marker" aria-hidden="true"></i> <span>{{ usrde.location }}</span></p>
-        <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>{{ usrde.email }}</span></p>
-        <p>Public repos <span>{{ usrde.public_repos }}</span></p>
-        <p><fa-icon [icon]='faUserAlt'></fa-icon> <span>{{ usrde.followers }}</span></p>
-        <p><fa-icon [icon]='faUserFriends'></fa-icon> <span>{{ usrde.following }}</span></p>
-        <p>Created on <span>{{ usrde.create_at }}</span></p>
-        <p>Updated on <span>{{ usrde.update_at }}</span></p>
+        <div class="col-md-6  moredetail">
+          <h2><span>{{ usrde.name }}</span></h2>
+          <p><i class="fa fa-rss" aria-hidden="true"></i> <span> <a href="{{ usrde.blog }}"> Portfolio</a></span></p>
+          <p><i class="fa fa-map-marker" aria-hidden="true"></i> <span> {{ usrde.location }}</span></p>
+          <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <span> {{ usrde.email }}</span></p>
+          <p>Public repos <span>{{ usrde.public_repos }}</span></p>
+          <p>
+            <fa-icon [icon]='faUserAlt'></fa-icon> <span> {{ usrde.followers }}</span>
+          </p>
+          <p>
+            <fa-icon [icon]='faUserFriends'></fa-icon> <span> {{ usrde.following }}</span>
+          </p>
+          <p>Created on <span> {{ usrde.create_at }}</span></p>
+          <p>Updated on <span> {{ usrde.update_at }}</span></p>
+        </div>
       </div>
     </div>
   </div>
@@ -54,8 +59,6 @@
           <a href="{{ repo.clone_url }}"> <fa-icon [icon]='faClone'></fa-icon></a>
           <a href="{{ repo.homepage }}"><fa-icon [icon]='faLaptopCode'></fa-icon></a>  
         </div>
-
-        <p></p>
       </div>
     </div>
   </div>
