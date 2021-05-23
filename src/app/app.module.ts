@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchQueryComponent } from './search-query/search-query.component';
 import { RepodetailsComponent } from './repodetails/repodetails.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RepodetailsComponent } from './repodetails/repodetails.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

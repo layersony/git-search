@@ -1,8 +1,24 @@
-<div class="container bg-white">
+<div class="container">
   <div class="row">
-    <div class="col-md-3 mt-2" *ngFor='let repo of repos'>
-      <div class='bg-primary p-3 repo'>
-        <p>{{ repo.name }}</p>
+    <div class="col-md-3 col-sm-6 mt-2" *ngFor='let repo of repos'>
+      <div class='bg-white p-3 repo'>
+        <h3>{{ repo.name }}</h3>
+        <a href="{{ repo.html_url }}"><fa-icon [icon]='faUtensils'></fa-icon> To Repository</a>
+        <div class="desc">
+          <p>{{ repo.description }}</p>
+        </div>
+        <div class=" d-flex justify-content-between ">
+          <p>Created: {{ repo.created_url }}</p>
+          <p>Updated:{{ repo.updated_url }}</p>
+        </div>
+        <div class=" d-flex justify-content-between ">
+          <p> <fa-icon [icon]='faCodeBranch'></fa-icon> {{ repo.forks }}</p>
+          <p><fa-icon [icon]='faFileCode'></fa-icon> {{ repo.language }}</p>
+          <a href="{{ repo.clone_url }}"> <fa-icon [icon]='faClone'></fa-icon></a><br>
+          <a href="{{ repo.homepage }}"><fa-icon [icon]='faLaptopCode'></fa-icon></a>  
+        </div>
+
+        <p></p>
       </div>
     </div>
   </div>
