@@ -1,5 +1,6 @@
 .container{
-  height: 100vh;
+  height: 88vh;
+  margin-top: -10px;
 }
 .bg-image{
   max-height: 200px;
@@ -10,8 +11,16 @@
 .bg-image>.sub{
   margin-top: -30px;
   font-size: 50px;
+  color:#875ACB;
 }
 .search{
   max-width: 500px;
   padding: 20px;
+}
+button:hover{
+  background-color: #875ACB;
+  color: white;
+}
+input{
+  border-bottom: 3px solid #000;
 }

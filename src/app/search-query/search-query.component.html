@@ -1,4 +1,4 @@
-<div class="d-md-flex container justify-content-center align-items-center bg-white">
+<div class="d-md-flex container justify-content-center align-items-center bg-white" *ngIf='shwinput'>
   <div class="row justify-content-center align-items-center">
     <form (ngSubmit)='submitQuery()'>
       <div class="search text-center">
@@ -14,3 +14,5 @@
     </form>
   </div>
 </div>
+<ng-progress></ng-progress>
+<app-repodetails *ngIf='showrepo' (goback)=showrepodata($event)></app-repodetails>

@@ -1,6 +1,7 @@
 <div class="container">
   <div>
     <form (ngSubmit)='searchrepo()'>
+      <button class='btn btn-outline btn-lg' (click)='toback()'><fa-icon [icon]='faReply'></fa-icon> Back</button>
       <div class=" d-flex justify-content-center reposearch">
         <input type="text" id="reposearch" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
         <button type='submit' class="ml-2 mr-2 btn btn-md">Submit</button>

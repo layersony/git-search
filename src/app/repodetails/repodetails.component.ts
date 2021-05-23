@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { GithubsearchService } from '../githubsearch.service'
-import { faUtensils ,faLaptopCode,faSearch ,faFileCode, faCodeBranch, faMapMarker, faUserAlt, faUserFriends, faClone} from '@fortawesome/free-solid-svg-icons';
+import { faReply ,faLaptopCode,faSearch ,faFileCode, faCodeBranch, faMapMarker, faUserAlt, faUserFriends, faClone} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-repodetails',
   templateUrl: './repodetails.component.html',
   styleUrls: ['./repodetails.component.css']
 })
+
 export class RepodetailsComponent implements OnInit {
   faFileCode = faFileCode
   faCodeBranch = faCodeBranch
@@ -16,11 +17,14 @@ export class RepodetailsComponent implements OnInit {
   faClone = faClone
   faSearch = faSearch
   faLaptopCode = faLaptopCode
-  faUtensils = faUtensils
+  faReply = faReply
 
   repos: any = []
   usrde:any;
   searchrepos:any = []
+
+  @Output() goback = new EventEmitter<boolean>()
+  hideRepo!: boolean;
 
   reposearch:string = ''
   
@@ -33,7 +37,6 @@ export class RepodetailsComponent implements OnInit {
   ngOnInit() {
     this.repos = this.githubsearchService.repoData
     this.usrde = this.githubsearchService.userdetail
-    console.log(this.usrde)
   }
   
   searchrepo(){
@@ -43,5 +46,10 @@ export class RepodetailsComponent implements OnInit {
     //   //   console.log('working')
     //   // }
     // }
+  }
+
+  toback(){
+    this.hideRepo = true
+    this.goback.emit(this.hideRepo)
   }
 }

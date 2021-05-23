@@ -11,6 +11,7 @@ import { SearchQueryComponent } from './search-query/search-query.component';
 import { RepodetailsComponent } from './repodetails/repodetails.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShortenPipe } from './shorten.pipe';
+import { RepoSearchComponent } from './repo-search/repo-search.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ShortenPipe } from './shorten.pipe';
     SearchQueryComponent,
     RepodetailsComponent,
     ShortenPipe,
+    RepoSearchComponent,
   ],
   imports: [
     BrowserModule,
