@@ -17,14 +17,13 @@ export class GithubsearchService {
 
 
   constructor(private http:HttpClient) { 
-    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', '', '');
+    this.userdetail = new Userdetail('', '', '', '','','','','No email','','',0,'','', '', '');
     this.repos = new Repos('', '', '', '', 0, '', '', '', ''); 
   }
 
   // RECEIVING THE DATA
   getUserDetails(user:string){
 
-    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', '', '');
 
     interface ApiResponse {
       login:string,
@@ -66,15 +65,9 @@ export class GithubsearchService {
       }), (error:any )=>{
         reject(error);
       }
-    // })
-  //   return promise;
-  // }
-  // RECEIVE REPOS
-  // getUserRepos(user:string){
 
     this.repoData.splice(0, this.repoData.length) // deleting an array
 
-    // let promise = new Promise((resolve, reject) => {
       this.http.get<any>('https://api.github.com/users/' + user + '/repos?access_token=' + environment.apiKey).toPromise().then(response => {
         for (var i = 0; i < response.length; i++) {
           this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at, response[i].created_at, response[i].forks, response[i].language, response[i].clone_url, response[i].homepage, response[i].description )

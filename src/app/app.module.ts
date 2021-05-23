@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { SearchQueryComponent } from './search-query/search-query.component';
 import { RepodetailsComponent } from './repodetails/repodetails.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShortenPipe } from './shorten.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchQueryComponent,
     RepodetailsComponent,
+    ShortenPipe,
   ],
   imports: [
     BrowserModule,
