@@ -17,14 +17,14 @@ export class GithubsearchService {
 
 
   constructor(private http:HttpClient) { 
-    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', new Date(), new Date());
-    this.repos = new Repos('', '', new Date(), new Date(), 0, '', '', ''); 
+    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', '', '');
+    this.repos = new Repos('', '', '', '', 0, '', '', '', ''); 
   }
 
   // RECEIVING THE DATA
   getUserDetails(user:string){
 
-    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', new Date(), new Date());
+    this.userdetail = new Userdetail('', '', '', '','','','','','','',0,'','', '', '');
 
     interface ApiResponse {
       login:string,
@@ -40,8 +40,8 @@ export class GithubsearchService {
       public_repos:number,
       followers:string,
       following:string,
-      created_at: Date,
-      update_at: Date
+      created_at: string,
+      update_at: string
     }
 
     let promise = new Promise((resolve, reject) =>{
@@ -77,7 +77,7 @@ export class GithubsearchService {
     // let promise = new Promise((resolve, reject) => {
       this.http.get<any>('https://api.github.com/users/' + user + '/repos?access_token=' + environment.apiKey).toPromise().then(response => {
         for (var i = 0; i < response.length; i++) {
-          this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at, response[i].created_at, response[i].forks, response[i].language, response[i].clone_url, response[i].homepage )
+          this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at, response[i].created_at, response[i].forks, response[i].language, response[i].clone_url, response[i].homepage, response[i].description )
           this.repoData.push(this.singleRepoData)
 
         }

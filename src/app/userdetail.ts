@@ -13,8 +13,8 @@ export class Userdetail {
     public public_repos:number,
     public followers:string,
     public following:string,
-    public created_at: Date,
-    public update_at: Date
+    public created_at: string,
+    public update_at: string
   ){}
 }
 
