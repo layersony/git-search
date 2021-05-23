@@ -12,6 +12,7 @@ import { RepodetailsComponent } from './repodetails/repodetails.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShortenPipe } from './shorten.pipe';
 import { RepoSearchComponent } from './repo-search/repo-search.component';
+import { HighestforksDirective } from './highestforks.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RepoSearchComponent } from './repo-search/repo-search.component';
     RepodetailsComponent,
     ShortenPipe,
     RepoSearchComponent,
+    HighestforksDirective,
   ],
   imports: [
     BrowserModule,
