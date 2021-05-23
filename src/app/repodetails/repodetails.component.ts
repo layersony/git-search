@@ -1,7 +1,6 @@
-import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GithubsearchService } from '../githubsearch.service'
 import { faUtensils ,faLaptopCode,faSearch ,faFileCode, faCodeBranch, faMapMarker, faUserAlt, faUserFriends, faClone} from '@fortawesome/free-solid-svg-icons';
-import { Userdetail } from '../userdetail'
 
 @Component({
   selector: 'app-repodetails',

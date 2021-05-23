@@ -2,12 +2,24 @@
   background-color: rgba(0, 0, 0, 0.522);
   padding: 10px;
 }
+.container button{
+  background-color: rgb(168, 50, 158);
+  color: White;
+  margin-left: 10px;
+}
 .repo{
   min-height: 250px;
+  padding: 7px;
+  border-radius: 5px;
+}
+.repo a{
+  color: #875ACB;
+  text-decoration: none;
+  font-size: 17px;
 }
 .userdetail{
   padding: 10px 30px ;
-  width: 700px;
+  max-width: 700px;
 }
 
 img{
@@ -15,11 +27,24 @@ img{
   height: 190px;
   border-radius: 50%;
 }
-a{
+.userdetail a{
   text-decoration: none;
   color: inherit;
 }
 
 .moredetail{
   padding: 20px;
+}
+span {
+  color: #875ACB;
+  font-weight:500;
+}
+.userdetail p{
+  font-weight: bold;
+}
+fa-icon{
+  font-size: 20px;
+}
+#reposearch{
+  width: 25%;
 }

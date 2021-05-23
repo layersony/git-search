@@ -1,9 +1,9 @@
 <div class="container">
   <div>
     <form (ngSubmit)='searchrepo()'>
-      <div class=" d-flex justify-content-between reposearch">
-        <input type="text" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
-        <button type='submit' class="ml-2 btn btn-outline-danger">Submit</button>
+      <div class=" d-flex justify-content-center reposearch">
+        <input type="text" id="reposearch" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
+        <button type='submit' class="ml-2 mr-2 btn btn-md">Submit</button>
       </div>
     </form>
   </div>
@@ -16,14 +16,14 @@
             <img src="{{usrde.avatar_url}}" alt="{{usrde.login}}avatar" class="img-fluid">
           </div>
           <h3>{{ usrde.login }}</h3>
-          <p><i class="fa fa-twitter" aria-hidden="true"></i> <span>{{ usrde.twitter_username }}</span></p>
+          <p><i class="fa fa-twitter" aria-hidden="true"></i> <span>@{{ usrde.twitter_username }}</span></p>
   
           <p>Bio <span>{{ usrde.bio }}</span></p>
   
         </div>
         <div class="col-md-6  moredetail">
           <h2><span>{{ usrde.name }}</span></h2>
-          <p><i class="fa fa-rss" aria-hidden="true"></i> <span> <a href="{{ usrde.blog }}"> Portfolio</a></span></p>
+          <p><i class="fa fa-link" aria-hidden="true"></i> <span> <a href="{{ usrde.blog }}"> Portfolio Link</a></span></p>
           <p><i class="fa fa-map-marker" aria-hidden="true"></i> <span> {{ usrde.location }}</span></p>
           <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <span> {{ usrde.email }}</span></p>
           <p>Public repos <span>{{ usrde.public_repos }}</span></p>
@@ -40,9 +40,10 @@
     </div>
   </div>
   <hr>
+
   <div class="row">
     <div class="col-md-3 col-sm-6 mt-2" *ngFor='let repo of repos'>
-      <div class='bg-white p-3 repo'>
+      <div class='bg-white repo'>
         <h3>{{ repo.name }}</h3>
         <hr>
         <a href="{{ repo.html_url }}"><i class="fa fa-github" aria-hidden="true"></i> To Repository</a>
@@ -54,12 +55,13 @@
           <p>Updated:{{ repo.updated_url }}</p>
         </div>
         <div class=" d-flex justify-content-between ">
-          <p> <fa-icon [icon]='faCodeBranch'></fa-icon> {{ repo.forks }}</p>
-          <p><fa-icon [icon]='faFileCode'></fa-icon> {{ repo.language }}</p>
+          <p> <fa-icon [icon]='faCodeBranch'></fa-icon> <span> {{ repo.forks }}</span></p>
+          <p><fa-icon [icon]='faFileCode'></fa-icon> <span> {{ repo.language }}</span></p>
           <a href="{{ repo.clone_url }}"> <fa-icon [icon]='faClone'></fa-icon></a>
           <a href="{{ repo.homepage }}"><fa-icon [icon]='faLaptopCode'></fa-icon></a>  
         </div>
       </div>
     </div>
   </div>
+
 </div>

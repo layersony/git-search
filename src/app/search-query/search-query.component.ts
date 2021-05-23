@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { GithubsearchService } from '../githubsearch.service'
+import { GithubsearchService } from '../githubsearch.service';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-search-query',
@@ -7,7 +9,7 @@ import { GithubsearchService } from '../githubsearch.service'
   styleUrls: ['./search-query.component.css']
 })
 export class SearchQueryComponent implements OnInit {
-
+  faSearch = faSearch;
   search:string = '';
   githubsearchService: GithubsearchService;
 
