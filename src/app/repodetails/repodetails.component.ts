@@ -26,7 +26,6 @@ export class RepodetailsComponent implements OnInit {
   @Output() goback = new EventEmitter<boolean>()
   hideRepo!: boolean;
 
-  reposearch:string = ''
   
   githubsearchService: GithubsearchService;
 
@@ -39,17 +38,20 @@ export class RepodetailsComponent implements OnInit {
     this.usrde = this.githubsearchService.userdetail
   }
   
-  searchrepo(){
-    // for (let i = 0; i< this.repos.length; i++){
-    //   // console.log(this.repos[i].name.toLowerCase().split(/[-_ ]/g))
-    //   // if (this.repos[i][0].name.toLowerCase().split(/[-_ ]/g) === this.reposearch){
-    //   //   console.log('working')
-    //   // }
-    // }
-  }
-
   toback(){
     this.hideRepo = true
     this.goback.emit(this.hideRepo)
+  }
+
+  maxvalue(){
+    let fun = Number.MIN_VALUE;
+    let arr = this.repos
+
+    for (let i=0; i<arr.length;i++){
+      if(arr[i].forks>fun){
+        fun = arr[i].forks
+      }
+    }
+    return fun;
   }
 }

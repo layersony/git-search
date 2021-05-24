@@ -10,6 +10,11 @@ const routes: Routes = [
   {
     path: 'repos', component:RepoSearchComponent
   },
+  {
+    path: '',
+    redirectTo: '/home', pathMatch:'full'
+  },
+
 ];
 
 @NgModule({

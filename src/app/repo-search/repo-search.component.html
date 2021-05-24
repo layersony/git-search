@@ -1,1 +1,45 @@
-<p>repo-search works!</p>
+<div class="container">
+  <div>
+    <form (ngSubmit)='searchrepo()'>
+      <div class=" d-flex justify-content-center reposearch">
+        <input type="text" id="reposearch" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
+        <button type='submit' class="ml-2 mr-2 btn btn-md">Submit</button>
+      </div>
+    </form>
+  </div>
+  <!-- <h3 class="text-white">Total Repos <span [(ngModel)]='totalcount'>{{ totalcount }}</span></h3> -->
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mt-2" *ngFor='let repo of repos'>
+      <div class='bg-white repo'>
+        <h3 *ngIf='repo.forks !== maxvalue() || repo.forks === 0'>{{ repo.name }}</h3>
+        <div *ngIf='repo.forks === maxvalue() && repo.forks > 0'>
+          <h3 appHighestforks>{{ repo.name }}</h3>
+        </div>
+
+        <hr>
+        <a href="{{ repo.html_url }}"><i class="fa fa-github" aria-hidden="true"></i> To Repository</a>
+        <div class="desc">
+          <p>{{ repo.description }} </p>
+        </div>
+        <div class=" d-flex justify-content-between ">
+          <p>Created: <span>{{ repo.created_at | date}}</span></p>
+          <!-- <p>Updated: <span>{{ repo.updated_at | date}}</span></p> -->
+        </div>
+        <div class=" d-flex justify-content-between ">
+          <p>
+            <fa-icon [icon]='faCodeBranch'></fa-icon> <span> {{ repo.forks }}</span>
+          </p>
+          <p>
+            <fa-icon [icon]='faFileCode'></fa-icon> <span> {{ repo.language }}</span>
+          </p>
+          <a href="{{ repo.clone_url }}">
+            <fa-icon [icon]='faClone'></fa-icon>
+          </a>
+          <a href="{{ repo.homepage }}">
+            <fa-icon [icon]='faLaptopCode'></fa-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

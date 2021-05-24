@@ -1,14 +1,5 @@
 <div class="container">
-  <div>
-    <form (ngSubmit)='searchrepo()'>
-      <button class='btn btn-outline btn-lg' (click)='toback()'><fa-icon [icon]='faReply'></fa-icon> Back</button>
-      <div class=" d-flex justify-content-center reposearch">
-        <input type="text" id="reposearch" class="form-control" placeholder="Search Repository..." [(ngModel)]='reposearch' name='reposearch'>
-        <button type='submit' class="ml-2 mr-2 btn btn-md">Submit</button>
-      </div>
-    </form>
-  </div>
-  <hr>
+  <button class='btn btn-outline btn-lg' (click)='toback()'><fa-icon [icon]='faReply'></fa-icon> Back</button>
   <div class="d-md-flex justify-content-center align-items-center">
     <div class="text-left bg-white userdetail">
       <div class="row">
@@ -29,13 +20,12 @@
           <p><i class="fa fa-envelope-o" aria-hidden="true"></i> <span> {{ usrde.email }}</span></p>
           <p>Public repos <span>{{ usrde.public_repos }}</span></p>
           <p>
-            <fa-icon [icon]='faUserAlt'></fa-icon> <span> {{ usrde.followers }}</span>
+            <fa-icon [icon]='faUserAlt'></fa-icon> <span> {{ usrde.followers }} followers</span>
           </p>
           <p>
-            <fa-icon [icon]='faUserFriends'></fa-icon> <span> {{ usrde.following }}</span>
+            <fa-icon [icon]='faUserFriends'></fa-icon> <span> {{ usrde.following }} following</span>
           </p>
-          <p>Created on <span> {{ usrde.create_at }}</span></p>
-          <p>Updated on <span> {{ usrde.update_at }}</span></p>
+          <p>Created <span> {{ usrde.created_at | date }}</span></p>
         </div>
       </div>
     </div>
@@ -45,15 +35,20 @@
   <div class="row">
     <div class="col-md-3 col-sm-6 mt-2" *ngFor='let repo of repos'>
       <div class='bg-white repo'>
-        <h3>{{ repo.name }}</h3>
+        <h3 *ngIf='repo.forks !== maxvalue() || repo.forks === 0'>{{ repo.name }}</h3>
+        <div *ngIf='repo.forks === maxvalue() && repo.forks > 0'>
+          <h3 class='appHighestforks'>{{ repo.name }}</h3>
+          <p class="highest">Highest Forks</p>
+        </div>
+        
         <hr>
         <a href="{{ repo.html_url }}"><i class="fa fa-github" aria-hidden="true"></i> To Repository</a>
         <div class="desc">
           <p>{{ repo.description }} </p>
         </div>
         <div class=" d-flex justify-content-between ">
-          <p>Created: {{ repo.created_url }}</p>
-          <p>Updated:{{ repo.updated_url }}</p>
+          <p>Created: {{ repo.created_at | date }}</p>
+          <p>Updated:{{ repo.updated_at | shorten }}</p>
         </div>
         <div class=" d-flex justify-content-between ">
           <p> <fa-icon [icon]='faCodeBranch'></fa-icon> <span> {{ repo.forks }}</span></p>
