@@ -50,7 +50,7 @@ export class GithubsearchService {
     }
 
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResponse>('https://api.github.com/users/' + user + '?access_token=' + environment.apiKey).toPromise().then(response => {
+      this.http.get<ApiResponse>('https://api.github.com/users/' + user).toPromise().then(response => {
         this.userdetail.login = response.login,
         this.userdetail.avatar_url = response.avatar_url,
         this.userdetail.repos_url = response.repos_url,
@@ -74,7 +74,7 @@ export class GithubsearchService {
 
       this.repoData.splice(0, this.repoData.length) // deleting an array
 
-      this.http.get<any>('https://api.github.com/users/' + user + '/repos?access_token=' + environment.apiKey).toPromise().then(response => {
+      this.http.get<any>('https://api.github.com/users/' + user + '/repos').toPromise().then(response => {
         for (var i = 0; i < response.length; i++) {
           this.singleRepoData = new Repos(response[i].name, response[i].html_url, response[i].updated_at, new Date(response[i].created_at), response[i].forks, response[i].language, response[i].clone_url, response[i].homepage, response[i].description)
           this.repoData.push(this.singleRepoData)
