@@ -1,0 +1,50 @@
+.container{
+  background-color: rgba(0, 0, 0, 0.522);
+  padding: 10px;
+}
+.container button{
+  background-color: #875ACB;
+  color: White;
+  margin-left: 10px;
+}
+.repo{
+  min-height: 250px;
+  padding: 7px;
+  border-radius: 5px;
+}
+.repo a{
+  color: #875ACB;
+  text-decoration: none;
+  font-size: 17px;
+}
+.userdetail{
+  padding: 10px 30px ;
+  max-width: 700px;
+}
+
+img{
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+}
+.userdetail a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.moredetail{
+  padding: 20px;
+}
+span {
+  color: #875ACB;
+  font-weight:500;
+}
+.userdetail p{
+  font-weight: bold;
+}
+fa-icon{
+  font-size: 20px;
+}
+.highest{
+  color: #875ACB;
+}

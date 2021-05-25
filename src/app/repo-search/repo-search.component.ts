@@ -25,7 +25,8 @@ export class RepoSearchComponent implements OnInit {
   totalcount!: number
 
 
-  reposearch:string = ''
+  reposearch:string = 'layersony'
+  
   githubsearchService: GithubsearchService;
 
   constructor(githubsearchService:GithubsearchService) { 

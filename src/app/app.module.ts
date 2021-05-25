@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShortenPipe } from './shorten.pipe';
 import { RepoSearchComponent } from './repo-search/repo-search.component';
 import { HighestforksDirective } from './highestforks.directive';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HighestforksDirective } from './highestforks.directive';
     ShortenPipe,
     RepoSearchComponent,
     HighestforksDirective,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
